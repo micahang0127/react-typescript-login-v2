@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DefaultLayout from "../components/layout";
 import Home from "../pages/Home";
+import SignIn from "../pages/SignIn";
 import Error404 from "../pages/Error404";
 
 export default function Router() {
@@ -15,6 +16,8 @@ export default function Router() {
             </DefaultLayout>
           }
         />
+        <Route path="/signin" element={<SignIn />} />
+
         <Route path="/*" element={<Error404 />} />
       </Routes>
     </BrowserRouter>
