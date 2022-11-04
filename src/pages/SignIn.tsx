@@ -2,6 +2,7 @@ import React, { ChangeEvent, MouseEvent, useState } from "react";
 import { Box, Container } from "@mui/material/";
 import InputMui from "../components/_atoms/form/InputMui";
 import ButtonMui from "../components/_atoms/buttons/ButtonMui";
+import { buttonRight } from "../assets/css/style";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -66,7 +67,13 @@ const SignIn = () => {
             label="Password"
             onChange={handleOnChangePassword}
           />
-          <div style={{ marginTop: 30, marginBottom: 2 }}>
+          <div
+            style={{
+              marginTop: 30,
+              marginBottom: 2,
+              ...buttonRight,
+            }}
+          >
             <ButtonMui onClick={handleOnClickSubmit} />
           </div>
         </Box>
