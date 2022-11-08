@@ -1,4 +1,6 @@
 import React, { ChangeEvent, MouseEvent, useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_TODO } from "../apis/graphql/gql/user.gql";
 import { Box, Container } from "@mui/material/";
 import InputMui from "../components/_atoms/form/InputMui";
 import ButtonMui from "../components/_atoms/buttons/ButtonMui";
@@ -7,7 +9,9 @@ import { buttonRight } from "../assets/css/style";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [loginUser] = useMutation<Pick<IMutation, 'loginUser'>,loginUser(LOGIN_USE)
+  // const [loginUser, { data: userD, error: userE, loading: userL }] = useMutation(LOGIN_TEST);
+  const [loginUser, { data: userD, error: userE, loading: userL }] =
+    useMutation(ADD_TODO);
 
   const handleOnChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     console.log("iiiemail" + event.target.value);
@@ -21,27 +25,27 @@ const SignIn = () => {
 
   const handleOnClickSubmit = async (event: MouseEvent<HTMLButtonElement>) => {
     console.log(event, email, password);
-    // try {
-    //   const result = await loginUser({
-    //     variables: {
-    //       email: email,
-    //       password: password,
-    //     },
-    //   });
-    //   const accessToken = result.data?.loginUser.accessToken;
-    // } catch (error) {
-    //   console.log("loginerror", error);
-    // }
+
+    try {
+      loginUser({
+        variables: {
+          type: "placeholder",
+          someOtherVariable: 1234,
+        },
+      });
+      console.log(userD, userE, userL);
+      // if(userD && userD.token) authTokenActions.setAuthToken(data.tokenAuth)
+      // const result = await loginUser({variables: {email: email, password: password}})
+      // const accessToken = result.data?.loginUser.accessToken;
+      // console.log(accessToken)
+    } catch (error) {
+      console.log("loginError", error);
+    }
   };
 
-  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get("email"),
-  //     password: data.get("password"),
-  //   });
-  // };
+  // useEffect(() => {
+  //   if(data && data.tokenAuth) authTokenActions.setAuthToken(data.tokenAuth)
+  // }, [userD])
 
   return (
     <>
@@ -74,7 +78,7 @@ const SignIn = () => {
               ...buttonRight,
             }}
           >
-            <ButtonMui onClick={handleOnClickSubmit} />
+            <ButtonMui label="SignIn" onClick={handleOnClickSubmit} />
           </div>
         </Box>
       </Container>
