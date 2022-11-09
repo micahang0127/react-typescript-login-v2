@@ -13,7 +13,21 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginUser, { data: userD, error: userE, loading: userL }] =
-    useMutation(LOGIN_TEST);
+    useMutation(
+      LOGIN_TEST
+      // {
+      // context: {
+      //   headers: {
+      //     authorization: `Bearer ${window.localStorage.getItem("authToken")}`,
+      //     "Content-Type": "application/json",
+      //   },
+      // },
+      // onCompleted: ({ login }) => {
+      //   localStorage.setItem(AUTH_TOKEN, login.token);
+      //   navigate('/');
+      // }
+      // }
+    );
 
   const handleOnChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     console.log("iiiemail" + event.target.value);
@@ -42,7 +56,7 @@ const SignIn = () => {
       };
 
       localStorage.setItem("userInfo", JSON.stringify(userDS.data));
-      localStorage.setItem("token", userDS.data.token);
+      localStorage.setItem("authToken", userDS.data.token);
 
       // if(userD && userD.token) authTokenActions.setAuthToken(data.tokenAuth)
       // const result = await loginUser({variables: {email: email, password: password}})

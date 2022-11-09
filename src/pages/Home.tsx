@@ -42,7 +42,7 @@ const Home = () => {
   const handleOnClickLogout = (event: MouseEvent<HTMLButtonElement>) => {
     // dispatchEvent(logout());
     localStorage.removeItem("userInfo");
-    localStorage.removeItem("token");
+    localStorage.removeItem("authToken");
   };
 
   if (loading) return <p>Loading...</p>;
