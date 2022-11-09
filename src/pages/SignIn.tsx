@@ -37,6 +37,13 @@ const SignIn = () => {
       });
       console.log(userD, userE, userL);
 
+      const userDS = {
+        data: { name: "aaaa", email: "aaa@aaa.com", token: "token1" },
+      };
+
+      localStorage.setItem("userInfo", JSON.stringify(userDS.data));
+      localStorage.setItem("token", userDS.data.token);
+
       // if(userD && userD.token) authTokenActions.setAuthToken(data.tokenAuth)
       // const result = await loginUser({variables: {email: email, password: password}})
       // const accessToken = result.data?.loginUser.accessToken;
