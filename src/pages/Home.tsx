@@ -33,15 +33,14 @@ const Home = () => {
   };
 
   const handleOnClickGetUserInfo = (event: MouseEvent<HTMLButtonElement>) => {
-    const userInfo = useSelector((state) => {
-      state.userInfo;
-    });
-
-    console.log(userInfo);
+    // const userInfo = useSelector((state) => {
+    //   state.userInfo;
+    // });
+    // console.log(userInfo);
   };
 
   const handleOnClickLogout = (event: MouseEvent<HTMLButtonElement>) => {
-    dispatchEvent(logout());
+    // dispatchEvent(logout());
   };
 
   if (loading) return <p>Loading...</p>;
@@ -50,6 +49,7 @@ const Home = () => {
     <div>
       <p>메인</p>
       <Link to="/signin">Sign In</Link>
+      <Link to="/color">Color</Link>
       <div>
         <span>
           <ButtonMui label="Btn" onClick={handleOnClickBtn} />
