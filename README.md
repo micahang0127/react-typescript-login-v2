@@ -2,6 +2,10 @@
 
     react-router-dom 6.4.3
 
+    redux 4.2.0
+    @reduxjs/toolkit 1.9.0
+    react-redux  8.0.5
+
     @mui/material 5.10.12
 
     styled-components 5.3.6
@@ -14,6 +18,10 @@
     * router
 
         $ npm i react-router-dom
+
+    * reduxjs/toolkit
+
+        $ npm install redux react-redux @reduxjs/toolkit
 
     * material (MUI)
 

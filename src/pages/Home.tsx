@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { GET_LOCATIONS } from "../apis/graphql/gql/home.gql";
 import ButtonMui from "../components/_atoms/buttons/ButtonMui";
+import { useSelector } from "react-redux";
+import { logout } from "../redux/userSlice";
 
 const Home = () => {
   // [useQuery]
@@ -30,6 +32,18 @@ const Home = () => {
     console.log("fff", lazyD, lazyE, lazyL);
   };
 
+  const handleOnClickGetUserInfo = (event: MouseEvent<HTMLButtonElement>) => {
+    const userInfo = useSelector((state) => {
+      state.userInfo;
+    });
+
+    console.log(userInfo);
+  };
+
+  const handleOnClickLogout = (event: MouseEvent<HTMLButtonElement>) => {
+    dispatchEvent(logout());
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!(</p>;
   return (
@@ -39,6 +53,8 @@ const Home = () => {
       <div>
         <span>
           <ButtonMui label="Btn" onClick={handleOnClickBtn} />
+          <ButtonMui label="userInfo" onClick={handleOnClickGetUserInfo} />
+          <ButtonMui label="logout" onClick={handleOnClickLogout} />
         </span>
       </div>
     </div>
