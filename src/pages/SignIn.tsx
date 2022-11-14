@@ -84,7 +84,7 @@ const SignIn = () => {
             alignItems: "center",
           }}
         >
-          <h1>Sign in</h1>
+          <h1 className="test-color">Sign in</h1>
           <InputMui
             id="email"
             name="email"
